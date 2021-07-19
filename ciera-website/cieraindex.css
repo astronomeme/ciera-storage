@@ -1,0 +1,129 @@
+body {
+	background-color: #edcef2;
+}
+
+.body {
+	margin:30px 10% 30px 10%;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom:20px;
+	text-align: center;
+	background-color:white;
+	font-family:"Helvetica Neue", Helvetica, Arial, "sans-serif";
+	border-radius:8px;
+}
+
+h1 {
+	font-size: 50px;
+	letter-spacing: 5px;
+	display:inline-block;
+}
+
+hr {
+	background-color:black;
+	max-width: 600px;
+	border-width: 0.5px;
+	border-style:solid;
+}
+
+p {
+	font-size: 17px;
+}
+
+.highlighter {
+	color:#9b68a3;
+}
+
+.highlighter:hover {
+	color:white;
+	text-shadow:0px 0px 5px #9b68a3;
+	cursor:help;
+}
+
+.mainbar {
+	padding-top: 10px;
+	padding-bottom: 8px;
+	background-color: #704b75;
+	border-radius:8px;
+	color: white;
+	letter-spacing:3px;
+}
+
+.methods {
+	color:white;
+}
+
+.results {
+	color:white;
+}
+
+.conclude {
+	color:white;
+}
+
+.special {
+	color:white;
+}
+
+td {
+	text-align:center;
+	width:190px;
+	font-weight:bold;
+}
+
+td a {
+	text-decoration: none;
+	color: white
+}
+
+td a:hover {
+	text-decoration:underline;
+}
+
+img
+{ border: 0;}
+
+.hellostranger {
+	background-color:white;
+	border-radius: 8px;
+	padding:10px;
+	color:black;
+}
+
+.newsheadline {
+	text-align:left;
+	margin-top:-5px;
+	padding-left:20px;
+}
+
+.text {
+	text-align:left;
+	margin-top:-5px;
+	padding-left:20px;
+}
+
+.footer {
+	text-align: center;
+	margin: -20px;
+	padding-left: 15%;
+	padding-right: 15%;
+	padding-bottom:10px;
+	font-family:"Helvetica Neue", Helvetica, Arial, "sans-serif";
+	color: #704b75;
+	letter-spacing:3px;
+}
+
+.footer::after {
+	content: "website made for the ciera reu program in summer 2021. layout inspired by william leonard's site on neocities, to which he awesomely admits he has no rights reserved. thanks stranger, your page guided me through my first website."
+}
+
+@media screen and (max-width: 1200px) {
+  .body {
+	  margin:0 0 30px 0;
+  }
+
+  .footer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
