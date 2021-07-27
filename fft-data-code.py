@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jul  6 16:56:18 2021
+Created on Mon Jul 26 10:02:39 2021
 
 @author: naomi
 """
@@ -16,8 +16,8 @@ from astropy import constants as const
 # start of fft -----------------------------------
 # setting up values ------------------------------
 
-filename1 = open('wahlquist-output','r')
-dummy1 = pd.read_csv('wahlquist-output', delim_whitespace=False, comment='#', header=None)
+filename1 = open('data-output','r')
+dummy1 = pd.read_csv('data-output', delim_whitespace=False, comment='#', header=None)
 #print(dummy1)
 
 times = dummy1[0]
@@ -110,22 +110,22 @@ freqsend = fftfreq(npts,dt)
 f,ax = plt.subplots(figsize=(8,5))
 ax.loglog(freqlist,2.0/npts * np.abs(hppower[0:npts//2])) #c='red', linewidths=0.3, edgecolors='k')
 ax.set_xlabel("log freq")
-ax.set_ylabel("log hp power")
+ax.set_ylabel("log hp data power")
 
 f,ax = plt.subplots(figsize=(8,5))
 ax.loglog(freqlist,2.0/npts * np.abs(hxpower[0:npts//2])) #c='red', linewidths=0.3, edgecolors='k')
 ax.set_xlabel("log freq")
-ax.set_ylabel("log hx power")
+ax.set_ylabel("log hx data power")
 
 f,ax = plt.subplots(figsize=(8,5))
 ax.plot(freqlist,2.0/npts * hppower[0:npts//2]) #c='red', linewidths=0.3, edgecolors='k')
 ax.set_xlabel("freq")
-ax.set_ylabel("hp power")
+ax.set_ylabel("hp data power")
 
 f,ax = plt.subplots(figsize=(8,5))
 ax.plot(freqlist,2.0/npts * hxpower[0:npts//2]) #c='red', linewidths=0.3, edgecolors='k')
 ax.set_xlabel("freq")
-ax.set_ylabel("hx power")
+ax.set_ylabel("hx data power")
 
 # output info --------------------------------------
 
@@ -142,7 +142,7 @@ from  itertools import zip_longest
 
 d = [tlist,freqlist,hppower,hxpower]
 export_data1 = zip_longest(*d,fillvalue = '')
-with open('fft-output', 'w',encoding="ISO-8859-1",newline='') as csv_file:
+with open('fft-data-output', 'w',encoding="ISO-8859-1",newline='') as csv_file:
     wr = csv.writer(csv_file)
     wr.writerow(("time","freq","hpp","hxp"))
     wr.writerows(export_data1)

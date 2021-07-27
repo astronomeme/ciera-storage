@@ -57,7 +57,7 @@ mass2 = mass2 * solarmass
 
 g = const.G.value # already in SI
 
-ecc = eval(datalist[2])
+ecc = 0.5 #eval(datalist[2])
 
 # constants and setting up -----------------------------------------
 

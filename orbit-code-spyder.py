@@ -53,17 +53,17 @@ def bisec(psihigh,psilow,bimanom):
 
 filename = open('binarytwo.dat','r')
 datalist = []
-amcvn = filename.readlines()
-amcvn
-for item in amcvn:
+dummy = filename.readlines()
+print(dummy)
+for item in dummy:
     equals = item.index('=')
     datalist.append(item[equals+2:-1])
-datalist
+print(datalist)
 
 # init cons ------------------------------------------------------
 
-tsim = eval(datalist[11]) #= 6.16 * (10**-5)
-tsim = tsim * (3.15*(10**7))
+tsim = 11000 #eval(datalist[11]) #= 6.16 * (10**-5)
+#tsim = tsim * (3.15*(10**7))
 #print(tsim)
 
 #masses, switching to SI units aka kg
@@ -82,7 +82,7 @@ smajaxis = smajaxis * aumeter
 #print(smajaxis)
 
 #eccentricity 
-ecc = eval(datalist[2])
+ecc = 0.5 #eval(datalist[2])
 #print(ecc)
 
 #orbital period
@@ -91,7 +91,7 @@ g = const.G.value # already in SI
 initnumer = 4 * (np.pi**2) * (smajaxis**3)
 initdenom = (mass1 + mass2) * g
 P = np.sqrt(initnumer/initdenom)
-#print(P)
+print('P:'+str(P))
 
 #rp, for later
 rp = smajaxis * (1-ecc)
@@ -103,12 +103,15 @@ rp = smajaxis * (1-ecc)
 
 low = 0
 high = 10000
-step = eval(datalist[12])
-timeindex = np.linspace(low,tsim,step)
-dt = tsim / step
+npts = eval(datalist[12])
+timeindex = np.linspace(low,tsim,npts)
+print(npts)
+print(len(timeindex))
+print(timeindex.max())
+dt = tsim / npts
 #dt = datalist[11] / step
 #print(timeindex)
-#print(dt)
+print(dt)
 
 # main orbit code --------------------------------------------------
 

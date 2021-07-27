@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jul 13 12:08:47 2021
+Created on Mon Jul 26 10:04:46 2021
 
 @author: naomi
 """
+
 #imports -------------------------------------------------------
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,8 +14,8 @@ from astropy import constants as const
 
 #setting up -------------------------------------------------
 
-filename1 = open('fft-output','r')
-dummy = pd.read_csv('fft-output', delim_whitespace=False, comment='#', header=None)
+filename1 = open('fft-data-output','r')
+dummy = pd.read_csv('fft-data-output', delim_whitespace=False, comment='#', header=None)
 
 times = dummy[0]
 freq = dummy[1]
@@ -78,44 +79,6 @@ for index in range(0,len(freqlist)): #from 0 to 510
         hxmults = hxmults * hx
     hphclist.append(hpmults)
     hxhclist.append(hxmults) 
-    
-#print(hphclist)
-
-# graph looks odd
-# its bc all the power terms have super small values
-# and multiplying by small values = smaller
-# but then what happens @ the spike?
-
-# PLANNING TO TRY THIS CODE AGAIN, MORE METHODICALLY
-
-#for index in range(1,len(freqlist)): #dont use dc term
-    #current = index
-    #print(current)
-    #k = 4 # shane said range 3-5 for k
-    #harmlist = []
-    #hpmults = 1
-    #hxmults = 1
-    #for loops in range (1,k+1):
-        #harmindex = loops * current # getting harmonics indexes
-        # storing in list for later use
-        #if harmindex>len(freqlist): #-1:
-            #break
-        #harmlist.append(harmindex)
-    # we now have a list full of the indexes of harmonica
-    # for this specific frequency 
-    #print(harmlist)
-    #for term in harmlist: # each term is an index
-        #testerm = term - 1
-        #hp = hppower[term]
-        #hx = hxpower[term]
-        #hpmults = hpmults * hp
-        #hxmults = hxmults * hx
-    #hphclist.append(hpmults)
-    #hxhclist.append(hxmults)
-    
-# the error comes from the fact that harmindex[-1]
-# when index = 256
-# is 1024, which is beyond the index of hppower
 
 # no more str ---------------------------------------------
 
@@ -133,21 +96,21 @@ from matplotlib import ticker
 f,ax = plt.subplots(figsize=(8,5))
 ax.loglog(formatfreq,2.0/npts * np.abs(hphclist[0:npts//2])) #c='red', linewidths=0.3, edgecolors='k')
 ax.set_xlabel("log freq")
-ax.set_ylabel("log hp hc")
+ax.set_ylabel("log hp data hc")
 
 f,ax = plt.subplots(figsize=(8,5))
 ax.loglog(formatfreq,2.0/npts * np.abs(hxhclist[0:npts//2])) #c='red', linewidths=0.3, edgecolors='k')
 ax.set_xlabel("log freq")
-ax.set_ylabel("log hx hc")
+ax.set_ylabel("log hx data hc")
 
 f,ax = plt.subplots(figsize=(8,5))
 ax.plot(formatfreq,hphclist)
 ax.set_xlabel("freq")
-ax.set_ylabel("hp hc")
+ax.set_ylabel("hp data hc")
 
 f,ax = plt.subplots(figsize=(8,5))
 ax.plot(formatfreq,hxhclist) #c='red', linewidths=0.3, edgecolors='k')
 ax.set_xlabel("freq")
-ax.set_ylabel("hx hc")
+ax.set_ylabel("hx data hc")
 
 #ax.plot(freqlist[:1023],hphclist)
